@@ -5,9 +5,15 @@
 # COPY . .
 # CMD ["npm", "start"]
 
-FROM python:3.11
+# FROM python:3.11
+# WORKDIR /app
+# COPY requirements.txt .
+# RUN pip install -r requirements.txt
+# COPY . .
+# CMD ["python", "app.py"]
+
+FROM amazoncorretto:17
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["python", "app.py"]
+COPY App.java .
+RUN javac App.java
+CMD ["java", "App"]

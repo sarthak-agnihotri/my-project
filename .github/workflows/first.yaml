@@ -199,20 +199,39 @@
 #         run: docker run my-python-app
 
 # This workflow will demonstrate how to build and push a Docker image to Docker Hub using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
-name: Docker Push CI
+# name: Docker Push CI
+# on: push
+# jobs:
+#   docker:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@v3 # This action is used to log in to Docker Hub using the provided credentials
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME }} # Add your Docker Hub username as a secret in your repository settings
+#           password: ${{ secrets.DOCKER_PASSWORD }} # Add your Docker Hub password as a secret in your repository settings
+#       - name: Build Docker Image
+#         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app . # Build the Docker image and tag it with your Docker Hub username
+#       - name: Push Docker Image
+#         run: docker push ${{ secrets.DOCKER_USERNAME }}/python-app # Push the Docker image to Docker Hub using the tag specified in the previous step
+
+# This workflow will demonstrate how to build and push a Docker image for a Java application to Docker Hub using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
+name: Java Docker Push
 on: push
 jobs:
-  docker:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Login to Docker Hub
-        uses: docker/login-action@v3 # This action is used to log in to Docker Hub using the provided credentials
+        uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }} # Add your Docker Hub username as a secret in your repository settings
-          password: ${{ secrets.DOCKER_PASSWORD }} # Add your Docker Hub password as a secret in your repository settings
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app . # Build the Docker image and tag it with your Docker Hub username
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/java-app . # Build the Docker image and tag it with your Docker Hub username
       - name: Push Docker Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/python-app # Push the Docker image to Docker Hub using the tag specified in the previous step
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/java-app # Push the Docker image to Docker Hub using the tag specified in the previous step
