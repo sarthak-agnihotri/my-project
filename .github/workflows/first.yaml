@@ -1,3 +1,4 @@
+# This is a basic workflow to help you get started with Actions
 # name: My First Workflow
 # on: push
 # jobs:
@@ -7,6 +8,7 @@
 #       - name: Print Hello
 #         run: echo "Hello Sarthak"
 
+# This is a basic workflow, and is meant to help you get started with Actions. You can delete this file, and start from scratch, or you can edit it to fit your needs. The workflow will run on every push to the repository.
 # name: Fixed Workflow
 # on: push
 # jobs:
@@ -20,15 +22,35 @@
 #       - name: Show Files
 #         run: ls
 
-name: Checkout Example
+# This workflow will checkout the repository, show the files in the repository, and show the current folder. You can modify this workflow to fit your needs.
+# name: Checkout Example
+# on: push
+# jobs:
+#   checkout-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download Repository
+#         uses: actions/checkout@v4
+#       - name: Show Files
+#         run: ls
+#       - name: Show Current Folder
+#         run: pwd
+
+
+#This workflow will install a programming language of your choice. You can modify this workflow to fit your needs.
+name: Node Example
 on: push
 jobs:
-  checkout-job:
+  node-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Download Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Show Files
-        run: ls
-      - name: Show Current Folder
-        run: pwd
+      - name: Install Node.js
+        uses: actions/setup-node@v4 #install node.js
+        with:
+          node-version: 18 #specify the version of node.js you want to install
+      - name: Check Node.js Version
+        run: node -v
+      - name: Check npm Version
+        run: npm -v
