@@ -92,19 +92,41 @@
 #       - name: Run Application
 #         run: npm start
 
-# 
-name: Multiple Jobs Workflow
+# This workflow will run multiple jobs in parallel. You can modify this workflow to fit your needs.
+# name: Multiple Jobs Workflow
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Print Build Message
+#         run: echo "This is the build job"
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print Test Message
+#         run: echo "This is the test job"
+
+# This workflow will run multiple jobs in parallel and also have a job that depends on the other two jobs. You can modify this workflow to fit your needs.
+name: Job Dependency Workflow
 on: push
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Print Build Message
-        run: echo "This is the build job"
+      - name: Build Step
+        run: echo "Building Application"
   test:
+    needs: build # This means that the test job will only run after the build job has completed successfully.
     runs-on: ubuntu-latest
     steps:
-      - name: Print Test Message
-        run: echo "This is the test job"
+      - name: Test Step
+        run: echo "Testing Application"
+  deploy:
+    needs: test # This means that the deploy job will only run after both the build and test jobs have completed successfully.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Step
+        run: echo "Deploying Application"
