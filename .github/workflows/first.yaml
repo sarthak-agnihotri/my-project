@@ -184,16 +184,35 @@
 #    ↓
 # console.log()  
 
-#
-name: Python Docker Build
+# This workflow will demonstrate how to build and run a Docker image using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
+# name: Python Docker Build
+# on: push
+# jobs:
+#   docker-build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Build Docker Image
+#         run: docker build -t my-python-app . # then docker run my-python-app to run the container
+#       - name: Run Docker Container
+#         run: docker run my-python-app
+
+# This workflow will demonstrate how to build and push a Docker image to Docker Hub using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
+name: Docker Push CI
 on: push
 jobs:
-  docker-build:
+  docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3 # This action is used to log in to Docker Hub using the provided credentials
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # Add your Docker Hub username as a secret in your repository settings
+          password: ${{ secrets.DOCKER_PASSWORD }} # Add your Docker Hub password as a secret in your repository settings
       - name: Build Docker Image
-        run: docker build -t my-python-app . # then docker run my-python-app to run the container
-      - name: Run Docker Container
-        run: docker run my-python-app
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/python-app . # Build the Docker image and tag it with your Docker Hub username
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/python-app # Push the Docker image to Docker Hub
