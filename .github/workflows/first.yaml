@@ -110,23 +110,38 @@
 #         run: echo "This is the test job"
 
 # This workflow will run multiple jobs in parallel and also have a job that depends on the other two jobs. You can modify this workflow to fit your needs.
-name: Job Dependency Workflow
+# name: Job Dependency Workflow
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Build Step
+#         run: echo "Building Application"
+#   test:
+#     needs: build # This means that the test job will only run after the build job has completed successfully.
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Test Step
+#         run: echo "Testing Application"
+#   deploy:
+#     needs: test # This means that the deploy job will only run after both the build and test jobs have completed successfully.
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy Step
+#         run: echo "Deploying Application"
+
+# This workflow will demonstrate how to use environment variables in GitHub Actions. You can modify this workflow to fit your needs.
+name: Environment Variables Workflow
 on: push
 jobs:
-  build:
+  demo:
     runs-on: ubuntu-latest
+    env: # Define environment variables that will be available to all steps in this job
+      GREETING: "Hello"
+      NAME: "Sarthak"
     steps:
-      - name: Build Step
-        run: echo "Building Application"
-  test:
-    needs: build # This means that the test job will only run after the build job has completed successfully.
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test Step
-        run: echo "Testing Application"
-  deploy:
-    needs: test # This means that the deploy job will only run after both the build and test jobs have completed successfully.
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy Step
-        run: echo "Deploying Application"
+      - name: Print Greeting
+        run: echo "$GREETING, $NAME!" # Use the environment variables defined above
+      - name: Show Environment Variables
+        run: env # This will print all environment variables available in this step, including GREETING and NAME
