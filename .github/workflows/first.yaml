@@ -37,7 +37,7 @@
 #         run: pwd
 
 
-#This workflow will install a programming language of your choice. You can modify this workflow to fit your needs.
+# This workflow will install a programming language of your choice. You can modify this workflow to fit your needs.
 # name: Node Example
 # on: push
 # jobs:
@@ -55,7 +55,25 @@
 #       - name: Check npm Version
 #         run: npm -v
 
-#This workflow will run the start script defined in your package.json file. You can modify this workflow to fit your needs.
+# This workflow will run the start script defined in your package.json file. You can modify this workflow to fit your needs.
+# name: Node CI
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 18
+#       - name: Install Dependencies
+#         run: npm install #npm init -y to create package.json file and npm install to install dependencies
+#       - name: Run Application
+#         run: npm start
+
+# This workflow will run the start script defined in your package.json file and also cache the npm dependencies to speed up the workflow. You can modify this workflow to fit your needs.
 name: Node CI
 on: push
 jobs:
@@ -68,7 +86,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
       - name: Install Dependencies
-        run: npm install #npm init -y to create package.json file and npm install to install dependencies
+        run: npm install
       - name: Run Application
         run: npm start
