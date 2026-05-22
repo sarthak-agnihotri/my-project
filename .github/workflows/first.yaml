@@ -74,7 +74,26 @@
 #         run: npm start
 
 # This workflow will run the start script defined in your package.json file and also cache the npm dependencies to speed up the workflow. You can modify this workflow to fit your needs.
-name: Node CI
+# name: Node CI
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 18
+#           cache: 'npm'
+#       - name: Install Dependencies
+#         run: npm install #npm install is used to install the dependencies defined in the package-lock.json file
+#       - name: Run Application
+#         run: npm start
+
+# 
+name: Multiple Jobs Workflow
 on: push
 jobs:
   build:
@@ -82,12 +101,10 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-      - name: Install Dependencies
-        run: npm install
-      - name: Run Application
-        run: npm start
+      - name: Print Build Message
+        run: echo "This is the build job"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Test Message
+        run: echo "This is the test job"
