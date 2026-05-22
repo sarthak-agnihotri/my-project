@@ -156,15 +156,42 @@
 #       - name: Print Secret
 #         run: echo ${{ secrets.MY_SECRET }} # Use the secret defined in the repository settings. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
 
+# This workflow will demonstrate how to build a Docker image using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
+# name: Docker Build
+# on: push
+# jobs:
+#   docker-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Build Docker Image
+#         run: docker build -t my-node-app . # then docker run my-app to run the container
+#     Inside Dockerfile:
+
+# CMD ["npm", "start"]
+
+# Meaning:
+
+# When container starts:
+# run npm start
+
+# Then again:
+
+# npm start
+#    ↓
+# node index.js
+#    ↓
+# console.log()  
+
 #
-name: Docker Build
+name: Python Docker Build
 on: push
 jobs:
-  docker-job:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Build Docker Image
-        run: docker build -t my-node-app . # then docker run my-app to run the container
-      
+        run: docker build -t my-python-app . # then docker run my-python-app to run the container
