@@ -154,4 +154,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Secret
-        run: echo "The secret value is: ${{ secrets.MY_SECRET }}" # Use the secret defined in the repository settings. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
+        run: echo ${{ secrets.MY_SECRET }} # Use the secret defined in the repository settings. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
