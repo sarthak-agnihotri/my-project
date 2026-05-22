@@ -132,16 +132,26 @@
 #         run: echo "Deploying Application"
 
 # This workflow will demonstrate how to use environment variables in GitHub Actions. You can modify this workflow to fit your needs.
-name: Environment Variables Workflow
+# name: Environment Variables Workflow
+# on: push
+# jobs:
+#   demo:
+#     runs-on: ubuntu-latest
+#     env: # Define environment variables that will be available to all steps in this job
+#       GREETING: "Hello"
+#       NAME: "Sarthak"
+#     steps:
+#       - name: Print Greeting
+#         run: echo "$GREETING, $NAME!" # Use the environment variables defined above
+#       - name: Show Environment Variables
+#         run: env # This will print all environment variables available in this step, including GREETING and NAME
+
+# This workflow will demonstrate how to use secrets in GitHub Actions. You can modify this workflow to fit your needs. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
+name: Secrets Workflow
 on: push
 jobs:
-  demo:
+  secret-job:
     runs-on: ubuntu-latest
-    env: # Define environment variables that will be available to all steps in this job
-      GREETING: "Hello"
-      NAME: "Sarthak"
     steps:
-      - name: Print Greeting
-        run: echo "$GREETING, $NAME!" # Use the environment variables defined above
-      - name: Show Environment Variables
-        run: env # This will print all environment variables available in this step, including GREETING and NAME
+      - name: Print Secret
+        run: echo "The secret value is: ${{ secrets.MY_SECRET }}" # Use the secret defined in the repository settings. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
