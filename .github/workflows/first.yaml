@@ -1,4 +1,13 @@
-name: My First Workflow
+# name: My First Workflow
+# on: push
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print Hello
+#         run: echo "Hello Sarthak"
+
+name: Fixed Workflow
 on: push
 jobs:
   first-job:
@@ -6,3 +15,7 @@ jobs:
     steps:
       - name: Print Hello
         run: echo "Hello Sarthak"
+      - name: Show Date
+        run: date
+      - name: Show Files
+        run: ls
