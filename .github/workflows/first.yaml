@@ -350,15 +350,30 @@
 #         run: java App # Run the compiled Java application using the java command
 
 # This workflow will demonstrate how to trigger a workflow on a schedule using cron syntax. You can modify this workflow to fit your needs. This workflow will run every 5 minutes, but you can adjust the cron expression to change the schedule as needed.
-name: Schedule Workflow
+# name: Schedule Workflow
+# on:
+#   schedule:
+#     - cron: '*/5 * * * *' # This means that the workflow will run every 5 minutes. You can modify the cron expression to fit your needs.
+# jobs:
+#   scheduled-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Print Message
+#         run: echo "This workflow runs on a schedule!"
+
+# This workflow will demonstrate how to trigger a workflow every 1 minute using cron syntax. You can modify this workflow to fit your needs. This workflow will run every 1 minute, but you can adjust the cron expression to change the schedule as needed.
+name: Every 1 Minute Workflow
+
 on:
   schedule:
-    - cron: '*/5 * * * *' # This means that the workflow will run every 5 minutes. You can modify the cron expression to fit your needs.
+    - cron: '* * * * *'
+
 jobs:
-  scheduled-job:
+  every-minute-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Print Message
-        run: echo "This workflow runs on a schedule!"
+      - name: Print Time Message
+        run: echo "This workflow runs every 1 minute"
