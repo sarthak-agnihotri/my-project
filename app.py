@@ -10,7 +10,9 @@
 
 # print("Python Matrix Workflow Running Successfully!")
 
-import requests
-import numpy
+# import requests
+# import numpy
 # print("Caching Workflow Started...")
-print("Second Run")
+# print("Second Run")
+
+print("Hello from GHCR Docker Image")
