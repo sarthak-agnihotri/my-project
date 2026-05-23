@@ -378,29 +378,53 @@
 #       - name: Print Time Message
 #         run: echo "This workflow runs every 1 minute"
 
-#
-name: Java Matrix Workflow
+# This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Java versions. You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Java 17 and Java 21.
+# name: Java Matrix Workflow
+# on: push
+# jobs:
+#   build:
+#     runs-on: ${{ matrix.os }} # This means that the workflow will run on the operating system specified in the matrix configuration below.
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest, windows-latest, macos-latest] # This defines a matrix of operating systems that the workflow will run on. The workflow will run once for each operating system specified in this list.
+#         java: [17, 21] # This defines a matrix of Java versions that the workflow will run with. The workflow will run once for each Java version specified in this list, in combination with each operating system specified in the os matrix.
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Setup Java
+#         uses: actions/setup-java@v4
+#         with:
+#           java-version: ${{ matrix.java }} # This means that the workflow will use the Java version specified in the matrix configuration above for each run of the workflow.
+#           distribution: corretto # Use the Corretto distribution of OpenJDK
+#       - name: Show OS
+#         run: echo "Running on ${{ matrix.os }}" # Print the operating system being used
+#       - name: Show Java Version
+#         run: java -version # Print the Java version being used
+#       - name: Compile Java Application
+#         run: javac App.java # Compile the Java application using the javac command 
+#       - name: Run Java Application
+#         run: java App # Run the compiled Java application using the java command
+
+# This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Python versions. You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Python 3.8, 3.9, 3.10, and 3.11.
+name: Python Matrix Workflow
 on: push
 jobs:
   build:
-    runs-on: ${{ matrix.os }} # This means that the workflow will run on the operating system specified in the matrix configuration below.
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest] # This defines a matrix of operating systems that the workflow will run on. The workflow will run once for each operating system specified in this list.
-        java: [17, 21] # This defines a matrix of Java versions that the workflow will run with. The workflow will run once for each Java version specified in this list, in combination with each operating system specified in the os matrix.
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: [3.8, 3.9, 3.10, 3.11]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Setup Java
-        uses: actions/setup-java@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          java-version: ${{ matrix.java }} # This means that the workflow will use the Java version specified in the matrix configuration above for each run of the workflow.
-          distribution: corretto # Use the Corretto distribution of OpenJDK
+          python-version: ${{ matrix.python }}
       - name: Show OS
-        run: echo "Running on ${{ matrix.os }}" # Print the operating system being used
-      - name: Show Java Version
-        run: java -version # Print the Java version being used
-      - name: Compile Java Application
-        run: javac App.java # Compile the Java application using the javac command 
-      - name: Run Java Application
-        run: java App # Run the compiled Java application using the java command
+        run: echo "Running on ${{ matrix.os }}"
+      - name: Show Python Version
+        run: python --version
+      - name: Run Python Application
+        run: python app.py
