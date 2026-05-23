@@ -364,16 +364,43 @@
 #         run: echo "This workflow runs on a schedule!"
 
 # This workflow will demonstrate how to trigger a workflow every 1 minute using cron syntax. You can modify this workflow to fit your needs. This workflow will run every 1 minute, but you can adjust the cron expression to change the schedule as needed.
-name: Every 1 Minute Workflow
+# name: Every 1 Minute Workflow
 
-on:
-  schedule:
-    - cron: '* * * * *'
+# on:
+#   schedule:
+#     - cron: '* * * * *'
 
+# jobs:
+#   every-minute-job:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Print Time Message
+#         run: echo "This workflow runs every 1 minute"
+
+#
+name: Java Matrix Workflow
+on: push
 jobs:
-  every-minute-job:
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: ${{ matrix.os }} # This means that the workflow will run on the operating system specified in the matrix configuration below.
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest] # This defines a matrix of operating systems that the workflow will run on. The workflow will run once for each operating system specified in this list.
+        java: [17, 21] # This defines a matrix of Java versions that the workflow will run with. The workflow will run once for each Java version specified in this list, in combination with each operating system specified in the os matrix.
     steps:
-      - name: Print Time Message
-        run: echo "This workflow runs every 1 minute"
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }} # This means that the workflow will use the Java version specified in the matrix configuration above for each run of the workflow.
+          distribution: corretto # Use the Corretto distribution of OpenJDK
+      - name: Show OS
+        run: echo "Running on ${{ matrix.os }}" # Print the operating system being used
+      - name: Show Java Version
+        run: java -version # Print the Java version being used
+      - name: Compile Java Application
+        run: javac App.java # Compile the Java application using the javac command 
+      - name: Run Java Application
+        run: java App # Run the compiled Java application using the java command
