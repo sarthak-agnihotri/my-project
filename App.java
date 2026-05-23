@@ -8,6 +8,6 @@
 
 public class App{
     public static void main(String[] args){
-        System.out.println("Discipline is the bridge between goals and accomplishment.");
+        System.out.println("Discipline is the bridge between goals and accomplishment!");
     }
 }
