@@ -406,25 +406,44 @@
 #         run: java App # Run the compiled Java application using the java command
 
 # This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Python versions. You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Python 3.8, 3.9, 3.10, and 3.11.
-name: Python Matrix Workflow
+# name: Python Matrix Workflow
+# on: push
+# jobs:
+#   build:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest, windows-latest, macos-latest]
+#         python: ['3.10', '3.11']
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Setup Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: ${{ matrix.python }}
+#       - name: Show OS
+#         run: echo "Running on ${{ matrix.os }}"
+#       - name: Show Python Version
+#         run: python --version
+#       - name: Run Python Application
+#         run: python app.py
+
+# 
+name: Python Cache Workflow
 on: push
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python: ['3.10', '3.11']
+  cache-demo:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python }}
-      - name: Show OS
-        run: echo "Running on ${{ matrix.os }}"
-      - name: Show Python Version
-        run: python --version
-      - name: Run Python Application
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Run Python App
         run: python app.py
