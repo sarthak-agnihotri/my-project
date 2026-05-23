@@ -311,14 +311,14 @@
 #       - name: Print Message
 #         run: echo "This workflow was triggered manually!"
 
-name: Manual Workflow Practice
-on:
-  workflow_dispatch:
-jobs:
-  practice:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Print Message
-        run: echo "This is for practice manual triggering!"
+# name: Manual Workflow Practice
+# on:
+#   workflow_dispatch:
+# jobs:
+#   practice:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Print Message
+#         run: echo "This is for practice manual triggering!"
