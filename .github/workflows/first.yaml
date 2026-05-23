@@ -311,14 +311,27 @@
 #       - name: Print Message
 #         run: echo "This workflow was triggered manually!"
 
-name: Manual Workflow Practice
+# name: Manual Workflow Practice
+# on:
+#   workflow_dispatch:
+# jobs:
+#   practice:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Print Message
+#         run: echo "This is for practice manual triggering!"
+
+# This workflow will demonstrate how to trigger a workflow on a pull request event. You can modify this workflow to fit your needs. This workflow will run whenever a pull request is opened, synchronized, or reopened.
+name: Pull Request Workflow
 on:
-  workflow_dispatch:
+  pull_request: # This means that the workflow will run whenever a pull request is opened, synchronized, or reopened.
 jobs:
-  practice:
+  pr-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Print Message
-        run: echo "This is for practice manual triggering!"
+        run: echo "This workflow runs on pull request events!"
