@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "sarthak-agnihotri/my-project",
+  "pipelineDirectory": "my-project",
+  "workspaceDirectory": "my-project\\my-project",
+  "repositories": {
+    "sarthak-agnihotri/my-project": {
+      "repositoryPath": "my-project\\my-project",
+      "lastRunOn": "05/23/2026 18:44:16 +05:30"
+    }
+  },
+  "lastRunOn": "05/23/2026 18:44:16 +05:30"
+}

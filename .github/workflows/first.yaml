@@ -251,13 +251,49 @@
 #         run: docker run -d -p 5000:5000 my-docker-app # Run the Docker container in detached mode and map port 5000 of the container to port 5000 of the host machine
 
 # This workflow will demonstrate how to run a workflow on a self-hosted runner. You can modify this workflow to fit your needs. Make sure to set up a self-hosted runner in your repository settings before running this workflow.
-name: Self Hosted Demo
+# name: Self Hosted Demo
+# on: push
+# jobs:
+#   demo:
+#     runs-on: self-hosted # This means that the workflow will run on a self-hosted runner instead of a GitHub-hosted runner. Make sure to set up a self-hosted runner in your repository settings before running this workflow.
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Print Message
+#         run: echo "This workflow is running on a self-hosted runner!"
+# STEP 1 — Start Runner First
+
+# Go to runner folder:
+
+# cd actions-runner
+
+# Then run:
+
+# .\run.cmd
+
+# When you see:
+
+# Listening for Jobs
+
+# your runner is active.
+
+#
+name: Java CI/CD Pipeline
 on: push
 jobs:
-  demo:
-    runs-on: self-hosted # This means that the workflow will run on a self-hosted runner instead of a GitHub-hosted runner. Make sure to set up a self-hosted runner in your repository settings before running this workflow.
+  build-and-push:
+    runs-on: self-hosted
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Print Message
-        run: echo "This workflow is running on a self-hosted runner!"
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker Image
+        run : docker build -t ${{ secrets.DOCKER_USERNAME }}/quote-app . # Build the Docker image and tag it with your Docker Hub username
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/quote-app # Push the Docker image to Docker Hub using the tag specified in the previous step
+      - name: Run Docker Container
+        run: docker run ${{ secrets.DOCKER_USERNAME }}/quote-app # Run the Docker container using the image built in the previous step
