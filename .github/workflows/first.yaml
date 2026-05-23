@@ -323,27 +323,42 @@
 #       - name: Print Message
 #         run: echo "This is for practice manual triggering!"
 
-name: Pull Request Java CI
+# This workflow will demonstrate how to trigger a workflow on pull request events. You can modify this workflow to fit your needs. This workflow will run whenever a pull request is opened, synchronized, or reopened, but only for pull requests targeting the master branch.
+# name: Pull Request Java CI
+# on:
+#   pull_request: # This means that the workflow will run whenever a pull request is opened, synchronized, or reopened.
+#   pull_request:
+#     branches:
+#       - master # This means that the workflow will only run for pull requests targeting the master branch.
+# jobs:
+#   pr-job:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Print Message
+#         run: echo "This workflow runs on pull request events!"
+#       - name: Setup Corretto Java
+#         uses: actions/setup-java@v4
+#         with:
+#           java-version: 17
+#           distribution: corretto # Use the Corretto distribution of OpenJDK
+#       - name: Compile Java Application
+#         run:  javac App.java # Compile the Java application using the javac command
+#       - name: Run Java Application
+#         run: java App # Run the compiled Java application using the java command
+
+# This workflow will demonstrate how to trigger a workflow on a schedule using cron syntax. You can modify this workflow to fit your needs. This workflow will run every 5 minutes, but you can adjust the cron expression to change the schedule as needed.
+name: Schedule Workflow
 on:
-  pull_request: # This means that the workflow will run whenever a pull request is opened, synchronized, or reopened.
-  pull_request:
-    branches:
-      - master # This means that the workflow will only run for pull requests targeting the master branch.
+  schedule:
+    - cron: '*/5 * * * *' # This means that the workflow will run every 5 minutes. You can modify the cron expression to fit your needs.
 jobs:
-  pr-job:
-  build:
+  scheduled-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Print Message
-        run: echo "This workflow runs on pull request events!"
-      - name: Setup Corretto Java
-        uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: corretto # Use the Corretto distribution of OpenJDK
-      - name: Compile Java Application
-        run:  javac App.java # Compile the Java application using the javac command
-      - name: Run Java Application
-        run: java App # Run the compiled Java application using the java command
+        run: echo "This workflow runs on a schedule!"
