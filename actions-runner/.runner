@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "sarthak-runner",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus9.actions.githubusercontent.com/hyJs8BSNM8AbrIEXgpu6Ny69aDumSJ3AYaXFAFuXIV4R3MUCym/",
+  "gitHubUrl": "https://github.com/sarthak-agnihotri/my-project",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}

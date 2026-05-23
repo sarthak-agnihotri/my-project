@@ -237,15 +237,27 @@
 #         run: docker push ${{ secrets.DOCKER_USERNAME }}/java-app # Push the Docker image to Docker Hub using the tag specified in the previous step
 
 # This workflow will demonstrate how to build and run a Docker image for a Python application using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
-name: Python CI-CD
+# name: Python CI-CD
+# on: push
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+#       - name: Build Docker Image
+#         run: docker build -t my-docker-app . # Build the Docker image and tag it as my-docker-app
+#       - name: Run Docker Container
+#         run: docker run -d -p 5000:5000 my-docker-app # Run the Docker container in detached mode and map port 5000 of the container to port 5000 of the host machine
+
+# This workflow will demonstrate how to run a workflow on a self-hosted runner. You can modify this workflow to fit your needs. Make sure to set up a self-hosted runner in your repository settings before running this workflow.
+name: Self Hosted Demo
 on: push
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  demo:
+    runs-on: self-hosted # This means that the workflow will run on a self-hosted runner instead of a GitHub-hosted runner. Make sure to set up a self-hosted runner in your repository settings before running this workflow.
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Build Docker Image
-        run: docker build -t my-docker-app . # Build the Docker image and tag it as my-docker-app
-      - name: Run Docker Container
-        run: docker run -d -p 5000:5000 my-docker-app # Run the Docker container in detached mode and map port 5000 of the container to port 5000 of the host machine
+      - name: Print Message
+        run: echo "This workflow is running on a self-hosted runner!"
