@@ -15,4 +15,4 @@
 # print("Caching Workflow Started...")
 # print("Second Run")
 
-print("Hello from GHCR Docker Image")
+print("GHCR Updated")
