@@ -31,7 +31,15 @@
 # RUN javac App.java
 # CMD ["java", "App"]
 
-FROM python:3.11
+# FROM python:3.11
+# WORKDIR /app
+# COPY app.py .
+# CMD ["python","app.py"]
+
+FROM node:20
 WORKDIR /app
-COPY app.py .
-CMD ["python","app.py"]
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm","start"]

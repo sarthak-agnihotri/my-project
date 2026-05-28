@@ -8,7 +8,8 @@
 #       - name: Print Hello
 #         run: echo "Hello Sarthak"
 
-# This is a basic workflow, and is meant to help you get started with Actions. You can delete this file, and start from scratch, or you can edit it to fit your needs. The workflow will run on every push to the repository.
+# This is a basic workflow, and is meant to help you get started with Actions. You can delete this file, 
+# and start from scratch, or you can edit it to fit your needs. The workflow will run on every push to the repository.
 # name: Fixed Workflow
 # on: push
 # jobs:
@@ -22,7 +23,8 @@
 #       - name: Show Files
 #         run: ls
 
-# This workflow will checkout the repository, show the files in the repository, and show the current folder. You can modify this workflow to fit your needs.
+# This workflow will checkout the repository, show the files in the repository, and show the current folder. 
+# You can modify this workflow to fit your needs.
 # name: Checkout Example
 # on: push
 # jobs:
@@ -73,7 +75,8 @@
 #       - name: Run Application
 #         run: npm start
 
-# This workflow will run the start script defined in your package.json file and also cache the npm dependencies to speed up the workflow. You can modify this workflow to fit your needs.
+# This workflow will run the start script defined in your package.json file and also cache the npm dependencies to speed up the workflow.
+# You can modify this workflow to fit your needs.
 # name: Node CI
 # on: push
 # jobs:
@@ -109,7 +112,8 @@
 #       - name: Print Test Message
 #         run: echo "This is the test job"
 
-# This workflow will run multiple jobs in parallel and also have a job that depends on the other two jobs. You can modify this workflow to fit your needs.
+# This workflow will run multiple jobs in parallel and also have a job that depends on the other two jobs. 
+# You can modify this workflow to fit your needs.
 # name: Job Dependency Workflow
 # on: push
 # jobs:
@@ -146,7 +150,8 @@
 #       - name: Show Environment Variables
 #         run: env # This will print all environment variables available in this step, including GREETING and NAME
 
-# This workflow will demonstrate how to use secrets in GitHub Actions. You can modify this workflow to fit your needs. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
+# This workflow will demonstrate how to use secrets in GitHub Actions. You can modify this workflow to fit your needs. 
+# Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
 # name: Secrets Workflow
 # on: push
 # jobs:
@@ -156,7 +161,8 @@
 #       - name: Print Secret
 #         run: echo ${{ secrets.MY_SECRET }} # Use the secret defined in the repository settings. Make sure to add a secret named MY_SECRET in your repository settings before running this workflow.
 
-# This workflow will demonstrate how to build a Docker image using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
+# This workflow will demonstrate how to build a Docker image using GitHub Actions. You can modify this workflow to fit your needs. 
+# Make sure to have a Dockerfile in the root of your repository before running this workflow.
 # name: Docker Build
 # on: push
 # jobs:
@@ -184,7 +190,8 @@
 #    ↓
 # console.log()  
 
-# This workflow will demonstrate how to build and run a Docker image using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
+# This workflow will demonstrate how to build and run a Docker image using GitHub Actions. You can modify this workflow to fit your needs. 
+# Make sure to have a Dockerfile in the root of your repository before running this workflow.
 # name: Python Docker Build
 # on: push
 # jobs:
@@ -198,7 +205,9 @@
 #       - name: Run Docker Container
 #         run: docker run my-python-app
 
-# This workflow will demonstrate how to build and push a Docker image to Docker Hub using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
+# This workflow will demonstrate how to build and push a Docker image to Docker Hub using GitHub Actions. 
+# You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before
+# running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
 # name: Docker Push CI
 # on: push
 # jobs:
@@ -217,7 +226,9 @@
 #       - name: Push Docker Image
 #         run: docker push ${{ secrets.DOCKER_USERNAME }}/python-app # Push the Docker image to Docker Hub using the tag specified in the previous step
 
-# This workflow will demonstrate how to build and push a Docker image for a Java application to Docker Hub using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
+# This workflow will demonstrate how to build and push a Docker image for a Java application to Docker Hub using GitHub Actions. 
+# You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this 
+# workflow, and also add your Docker Hub username and password as secrets in your repository settings.
 # name: Java Docker Push
 # on: push
 # jobs:
@@ -236,7 +247,8 @@
 #       - name: Push Docker Image
 #         run: docker push ${{ secrets.DOCKER_USERNAME }}/java-app # Push the Docker image to Docker Hub using the tag specified in the previous step
 
-# This workflow will demonstrate how to build and run a Docker image for a Python application using GitHub Actions. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
+# This workflow will demonstrate how to build and run a Docker image for a Python application using GitHub Actions. 
+# You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow.
 # name: Python CI-CD
 # on: push
 # jobs:
@@ -250,7 +262,8 @@
 #       - name: Run Docker Container
 #         run: docker run -d -p 5000:5000 my-docker-app # Run the Docker container in detached mode and map port 5000 of the container to port 5000 of the host machine
 
-# This workflow will demonstrate how to run a workflow on a self-hosted runner. You can modify this workflow to fit your needs. Make sure to set up a self-hosted runner in your repository settings before running this workflow.
+# This workflow will demonstrate how to run a workflow on a self-hosted runner. You can modify this workflow to fit your needs. 
+# Make sure to set up a self-hosted runner in your repository settings before running this workflow.
 # name: Self Hosted Demo
 # on: push
 # jobs:
@@ -277,7 +290,9 @@
 
 # your runner is active.
 
-# This workflow will demonstrate how to build, push, and run a Docker image for a Java application using GitHub Actions on a self-hosted runner. You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this workflow, and also add your Docker Hub username and password as secrets in your repository settings.
+# This workflow will demonstrate how to build, push, and run a Docker image for a Java application using GitHub Actions on a self-hosted runner.
+#  You can modify this workflow to fit your needs. Make sure to have a Dockerfile in the root of your repository before running this 
+# workflow, and also add your Docker Hub username and password as secrets in your repository settings.
 # name: Java CI/CD Pipeline
 # on: push
 # jobs:
@@ -298,7 +313,9 @@
 #       - name: Run Docker Container
 #         run: docker run ${{ secrets.DOCKER_USERNAME }}/quote-app # Run the Docker container using the image built in the previous step
 
-# This workflow will demonstrate how to trigger a workflow manually from the GitHub Actions tab in the repository. You can modify this workflow to fit your needs. This workflow will only run when manually triggered, and will not run on any push or pull request events.
+# This workflow will demonstrate how to trigger a workflow manually from the GitHub Actions tab in the repository. 
+# You can modify this workflow to fit your needs. This workflow will only run when manually triggered, and will not run on any push or 
+# pull request events.
 # name: Manual Workflow Demo
 # on:
 #   workflow_dispatch: # This means that the workflow will only run when manually triggered from the GitHub Actions tab in the repository.
@@ -323,7 +340,8 @@
 #       - name: Print Message
 #         run: echo "This is for practice manual triggering!"
 
-# This workflow will demonstrate how to trigger a workflow on pull request events. You can modify this workflow to fit your needs. This workflow will run whenever a pull request is opened, synchronized, or reopened, but only for pull requests targeting the master branch.
+# This workflow will demonstrate how to trigger a workflow on pull request events. You can modify this workflow to fit your needs. 
+# This workflow will run whenever a pull request is opened, synchronized, or reopened, but only for pull requests targeting the master branch.
 # name: Pull Request Java CI
 # on:
 #   pull_request: # This means that the workflow will run whenever a pull request is opened, synchronized, or reopened.
@@ -349,7 +367,8 @@
 #       - name: Run Java Application
 #         run: java App # Run the compiled Java application using the java command
 
-# This workflow will demonstrate how to trigger a workflow on a schedule using cron syntax. You can modify this workflow to fit your needs. This workflow will run every 5 minutes, but you can adjust the cron expression to change the schedule as needed.
+# This workflow will demonstrate how to trigger a workflow on a schedule using cron syntax. You can modify this workflow to fit your needs. 
+# This workflow will run every 5 minutes, but you can adjust the cron expression to change the schedule as needed.
 # name: Schedule Workflow
 # on:
 #   schedule:
@@ -378,7 +397,8 @@
 #       - name: Print Time Message
 #         run: echo "This workflow runs every 1 minute"
 
-# This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Java versions. You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Java 17 and Java 21.
+# This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Java versions. 
+# You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Java 17 and Java 21.
 # name: Java Matrix Workflow
 # on: push
 # jobs:
@@ -405,7 +425,8 @@
 #       - name: Run Java Application
 #         run: java App # Run the compiled Java application using the java command
 
-# This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Python versions. You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Python 3.8, 3.9, 3.10, and 3.11.
+# This workflow will demonstrate how to use a matrix strategy to run a workflow on multiple operating systems and Python versions. 
+# You can modify this workflow to fit your needs. This workflow will run on Ubuntu, Windows, and macOS, and will test with Python 3.10, and 3.11.
 # name: Python Matrix Workflow
 # on: push
 # jobs:
@@ -449,7 +470,33 @@
 #         run: python app.py
 
 #
-name: Push Docker Image to GHCR
+# name: Push Docker Image to GHCR
+# on: push
+# jobs:
+#   docker:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       packages: write
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v4
+#       - name: Login to GHCR
+#         uses: docker/login-action@v3
+#         with:
+#           registry: ghcr.io
+#           username: ${{ github.actor }}
+#           password: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Build Docker Image
+#         run: |
+#           docker build -t ghcr.io/${{ github.repository_owner }}/python-app .
+
+#       - name: Push Docker Image
+#         run: |
+#           docker push ghcr.io/${{ github.repository_owner }}/python-app
+
+#
+name: Push Node Docker Image to GHCR
 on: push
 jobs:
   docker:
@@ -467,9 +514,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build Docker Image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/python-app .
-
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/node-app .
       - name: Push Docker Image
-        run: |
-          docker push ghcr.io/${{ github.repository_owner }}/python-app
+        run: docker push ghcr.io/${{ github.repository_owner }}/node-app
